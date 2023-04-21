@@ -1,24 +1,22 @@
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.db import models
-from django.contrib.auth.models import BaseUserManager,AbstractBaseUser
 
-
-
-
+from EduAidNepal.validatino import isalphavalidator
 
 # Create your models here.
 
+
 class UserManager(BaseUserManager):
-    def create_user(self, email, name, password=None,password2=None):
+    def create_user(self, email, name, password=None, password2=None):
         """
         Creates and saves a User with the given email, name,tc and password.
         """
         if not email:
-            raise ValueError('Users must have an email address')
+            raise ValueError("Users must have an email address")
 
         user = self.model(
-        email=self.normalize_email(email),
-        name=name,
-       
+            email=self.normalize_email(email),
+            name=name,
         )
         print("hellow")
         user.set_password(password)
@@ -38,13 +36,14 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+
 class User(AbstractBaseUser):
     email = models.EmailField(
-        verbose_name='email address',
+        verbose_name="email address",
         max_length=255,
         unique=True,
     )
-    name = models.CharField(max_length=64)
+    name = models.CharField(max_length=64, validators=[isalphavalidator])
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -52,8 +51,8 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['name']
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["name"]
 
     def __str__(self):
         return self.email

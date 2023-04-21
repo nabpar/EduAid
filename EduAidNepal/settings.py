@@ -39,11 +39,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "corsheaders",
-    "refreshtoken",
-    "rest_framework",
-    "Accounts",
-    "drf_yasg",
+    "corsheaders",  # solve the error while connecting with frontend
+    "refreshtoken",  # refresh the token when needed
+    "rest_framework",  # packages for the api
+    "Accounts",  # Application
+    "drf_yasg",  # swagger packages
+    "admins",  # application
 ]
 
 MIDDLEWARE = [
