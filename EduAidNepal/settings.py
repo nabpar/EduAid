@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles", ## required for serving swagger ui's css/js files
+    "django.contrib.staticfiles",  ## required for serving swagger ui's css/js files
     "corsheaders",  # solve the error while connecting with frontend
     "refreshtoken",  # refresh the token when needed
     "rest_framework",  # packages for the api
     "Accounts",  # Application
-   'drf_yasg2',  # swagger packages
+    "drf_yasg2",  # swagger packages
     "admins",  # application
 ]
 
@@ -175,14 +175,9 @@ SIMPLE_JWT = {
 
 PASSWORD_RESET_TIMEOUT = 900  # 900 sec = 15 min
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "http://127.0.0.1:3000",
+# ]
 
 AUTH_USER_MODEL = "Accounts.User"
-
-
-SWAGGER_SETTINGS = {
-    "DEFAULT_GENERATOR_CLASS": "rest_framework.schemas.generators.BaseSchemaGenerator",
-}
