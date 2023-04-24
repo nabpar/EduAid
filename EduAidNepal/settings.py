@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
+    "django.contrib.staticfiles", ## required for serving swagger ui's css/js files
     "corsheaders",  # solve the error while connecting with frontend
     "refreshtoken",  # refresh the token when needed
     "rest_framework",  # packages for the api
     "Accounts",  # Application
-    "drf_yasg",  # swagger packages
+   'drf_yasg2',  # swagger packages
     "admins",  # application
 ]
 
@@ -181,3 +181,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 AUTH_USER_MODEL = "Accounts.User"
+
+
+SWAGGER_SETTINGS = {
+    "DEFAULT_GENERATOR_CLASS": "rest_framework.schemas.generators.BaseSchemaGenerator",
+}

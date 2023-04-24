@@ -3,11 +3,11 @@
 import os
 import sys
 
-import dotenv
-
+import dotenv 
+from dotenv import load_dotenv
 
 def main():
-    dotenv.read_dotenv()
+    dotenv.load_dotenv()
     """Run administrative tasks."""
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "EduAidNepal.settings")
     try:
