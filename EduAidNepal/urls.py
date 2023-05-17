@@ -13,12 +13,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-import settings
 from django.conf import settings
-from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
 from django.views.static import serve
 
 # from drf_yasg import openapi
@@ -44,13 +42,14 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("Accounts.urls"), name="Account_urls"),  # Accounts Urls
     path("", include("admins.urls"), name="admin_urls"),  # Admin urls
+    path("", include("blog.urls"), name="blog_url"),  # Blog Urls
     # path(
     #     "swagger/",
     #     schema_view.with_ui("swagger", cache_timeout=0),
     #     name="schema-swagger-ui",
     # ),
-    url("media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
-    url("static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
+    re_path("media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
+    re_path("static/(?P<path>.*)$", serve, {"document_root": settings.STATIC_ROOT}),
 ]
 urlpatterns = urlpatterns + static(
     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
