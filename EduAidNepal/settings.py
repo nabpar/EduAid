@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     "refreshtoken",  # refresh the token when needed
     "rest_framework",  # packages for the api
     "Accounts",  # Application
-    "drf_yasg2",  # swagger packages
+    "drf_yasg",  # swagger packages
     "admins",  # application
     "blog",  # application
 ]

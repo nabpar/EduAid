@@ -19,4 +19,4 @@ class Blog_Serializer(serializers.ModelSerializer):
 class Resource_serializer(serializers.ModelSerializer):
     class Meta:
         model = ResourceUploader
-        fields = ["images"]
+        fields = ["comment"]
